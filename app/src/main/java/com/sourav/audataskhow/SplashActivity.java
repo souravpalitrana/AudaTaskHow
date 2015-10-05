@@ -1,4 +1,5 @@
 package com.sourav.audataskhow;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -159,7 +160,10 @@ public class SplashActivity extends AppCompatActivity {
             stopFinal=true;
             stopAutoscroll(autoscrollTimer);
 
-
+            Intent intent= new Intent(SplashActivity.this,DetailActivity.class);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
 
         }
 
