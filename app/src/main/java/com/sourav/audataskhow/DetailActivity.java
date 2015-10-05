@@ -1,37 +1,30 @@
 package com.sourav.audataskhow;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.FrameLayout;
 
 public class DetailActivity extends AppCompatActivity {
+    FragmentView fragment;
+    FrameLayout frame;
+
+
+    boolean firstFragmentStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_detail, menu);
-        return true;
-    }
+        frame = (FrameLayout) findViewById(R.id.frame_main1);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (frame == null || savedInstanceState == null) {
+            fragment = new FragmentView();
+            getSupportFragmentManager().beginTransaction().add(R.id.frame_main1, fragment).commit();
+            firstFragmentStatus = true;
         }
 
-        return super.onOptionsItemSelected(item);
+
     }
+
 }
